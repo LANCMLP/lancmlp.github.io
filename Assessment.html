@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+ 
+.body {
+  font-size: 20px;
+}
+  
+.dropbtn {
+  background-color: #bbb;
+  color: black;
+  padding: 16px;
+  font-size: 20px;
+  border: 2 px;
+  position: relative;
+}
+
+.split {
+  height: 100%;
+  width: 50%;
+  position: fixed;
+  z-index: 1;
+  top: 0px;
+  overflow-x: hidden;
+  padding-top: 0px;
+}
+
+/* Control the left side */
+.left {
+  left: 0;
+  background-color: #79a4d2;
+
+}
+
+/* Control the right side */
+.right {
+  right: 0;
+  background-color: #cfd0d1;
+}
+
+/* If you want the content centered horizontally and vertically */
+.centered {
+  padding: 32px;
+  text-align: center;
+}
+
+.centered2 {
+  padding: 32px;
+  text-align: center;
+}
+
+.form {
+  position: inherit;
+}
+
+.dropdown {
+  position: relative;
+  margin: auto;
+  text-align: center;
+  margin-bottom: 20px;
+  background-color: #bbb;
+  font-size: 20px;
+
+}
+
+</style>
+
+</head>
+
+<body onload="document.assessment.reset();" class="body">
+
+<div class="split left">
+
+  <div class="centered">
+<h2 style="text-align:center; font-size:40px">LANC MLP Screening Assessment Tool</h2>  
+<p name="instructions"> Use the menu below to move through the assessment. Please scroll down the list to see all options.
+<br>
+<br>
+This tool will help you understand when to make a referral, and what LANC MLP can do to assist your patients.
+</p>
+
+<div style="text-align: center"><button onClick="window.location.reload();" class="dropbtn">Click Here to Reset this Form</button></p></div>
+
+
+<FORM name="assessment" class="form">
+
+<label for="category" class="label">What issue did the patient screen positive for? <br>(Scroll down the list to see all options) <br></label>
+<select name="category" id=category onchange='generate()' class="dropdown">
+	<option value="">-- choose one --
+	<optgroup label="Benefits">
+		<option value="Health Insurance">Health Insurance
+		<option value="Disability">Disability (SSI/SSDI)
+		<option value="Food Insecurity">Food Insecurity
+    <option value="WorkFirst">WorkFirst
+	</optgroup>
+  <optgroup><option></option></optgroup>
+	<optgroup label="Housing">
+		<option value="Eviction" >Eviction
+		<option value="Conditions" >Conditions
+		<option value="Other Housing Issue" >Other Housing Issue
+	</optgroup>
+    <optgroup><option></option></optgroup>
+	<optgroup label="Consumer">
+		<option value="Debt Collection" >Debt Collection
+	</optgroup>
+    <optgroup><option></option></optgroup>
+  <optgroup label="Individual Rights">
+		<option value="Wills and Powers of Attorney" >Wills and Powers of Attorney
+    <option value="Immigration" >Immigration
+    <option value="Expunction" >Expunction
+    <option value="Drivers License Restoration" >Driver's License Restoration
+	</optgroup>
+    <optgroup><option></option></optgroup>
+
+  <optgroup label="Family">
+		<option value="Domestic Violence" >Domestic Violence
+    <option value="Custody" >Custody
+    <option value="Child Support" >Child Support
+	</optgroup>
+    <optgroup><option></option></optgroup>
+
+  <optgroup label="Education">
+		<option value="Access to Special Education Services" >Access to Special Education Services
+    <option value="Suspension/Expulsion" >Suspension/Expulsion
+    <option value="Bullying/Harrassment" >Bullying/Harrassment
+	</optgroup>
+    <optgroup><option></option></optgroup>
+
+  <optgroup label="Employment">
+		<option value="Workers Compensation" >Worker's Compensation
+    <option value="Unemployment Insurance" >Unemployment Insurance
+	</optgroup>
+</select>
+
+<!-- WorkFirst Questions -->
+
+<label for="W1" id=W1L style="display: none" class="label">Does the patient currently have WorkFirst?</label>
+<select id="W1" name="W1" style="display: none" onchange='generate()' class="dropdown">
+   <option value="">-- choose one -- 
+    <option value="W1Y" >Yes</option>
+    <option value="W1N" >No</option>
+    <option value="W1W" >Had but lost it.</option>
+</select>
+
+<label for="W2" id=W2L style="display: none" class="label">What issue are they having?</label>
+<select id="W2" name="W2" style="display: none" onchange='generate()' class="dropdown">
+    <option value="">-- choose one -- 
+    <option value="W21" >Termination</option>
+    <option value="W22" >Reduction</option>
+    <option value="W23" >Overpayment</option>
+    <option value="W24" >Other</option>
+</select>
+
+<label for="W5" id=W5L style="display: none" class="label">Have they tried to apply, or were terminated within last 90 days?</label>
+<select id="W5" name="W5" style="display: none" onchange='generate()'class="dropdown">
+    <option value="">-- choose one -- 
+    <option value="F51" >Have applied.</option>
+    <option value="F52" >Have not applied.</option>
+    <option value="F53" >Terminated within 90 days.</option>
+    <option value="F54" >Terminated over 90 days ago.</option>
+</select>
+
+<label for="W6" id=W6L style="display: none" class="label">What happened to the application?</label>
+<select id="W6" name="W6" style="display: none" onchange='generate()'class="dropdown">
+    <option value="">-- choose one -- 
+    <option value="F61" >They are still waiting.</option>
+    <option value="F62" >They were discouraged by a DSS rep from applying.</option>
+    <option value="F63" >They were denied.</option>
+</select>
+
+<label for="W7" id=W7L style="display: none" class="label">Was the denial or termination within the last 90 days?</label>
+<select id="W7" name="W7" style="display: none" onchange='generate()' class="dropdown">
+    <option value="">-- choose one -- 
+    <option value="F71" >Yes.</option>
+    <option value="F72" >No.</option>
+</select>
+
+<!-- Insurance Questions --> 
+
+<label for="InsuredYN" id=InsuredYNLabel style="display: none" class="label">Is the patient or their family member currently insured?</label>
+<select id="InsuredYN" name="InsuredYN" style="display: none" onchange='generate()'class="dropdown">
+   <option value="">-- choose one -- 
+    <option value="Yes" >Yes</option>
+    <option value="No" >No</option>
+</select>
+
+<label for="InsY" id=InsYLabel style="display: none"  class="label">What insurance program does the issue or question involve?</label>
+<select id="InsY" name="InsuredYN" style="display: none" onchange='generate()'class="dropdown">
+   <option value="">-- choose one -- 
+    <option value="Medicaid" >Medicaid</option>
+    <option value="Medicare" >Medicare</option>
+    <option value="ACA" >Private Insurance - ACA Coverage</option>
+    <option value="Private" >Private Insurance - Non-ACA Coverage</option>
+    <option value="OtherIns" >Other</option>
+</select>
+
+<label for="MedicaidYN" id=MedicaidYNLabel style="display: none" class="label">Does the patient currently have Medicaid?</label>
+<select id="MedicaidYN" name="MedicaidYN" style="display: none" onchange='generate()'class="dropdown">
+   <option value="">-- choose one -- 
+    <option value="Yes" >Yes</option>
+    <option value="No" >No</option>
+</select>
+
+<label for="MedicaidY" id=MedicaidYLabel style="display: none" class="label">Which of the following situations apply?</label>
+<select id="MedicaidY" name="MedicaidY" style="display: none" onchange='generate()' class="dropdown">
+   <option value="">-- choose one -- 
+    <option value="MAServiceDenial" >Medical Service Denial in Last 60 Days</option>
+    <option value="MAReduction" >Reduction in Coverage in Last 60 Days</option>
+    <option value="MAManagedCare" >Denied Change of Managed Care Plan in Last 30 Days</option>
+    <option value="MALTC" >Question about Medicaid Long-Term Care</option>
+    <option value="MACustody" >Issue Accessing Benefits for Adopted Children</option>
+</select>
+
+<label for="MedicaidN" id=MedicaidNLabel style="display: none" class="label">Has the patient attempted to apply or has been recently terminated?</label>
+<select id="MedicaidN" name="MedicaidN" style="display: none" onchange='generate()' class="dropdown">
+   <option value="">-- choose one -- 
+    <option value="MADiscouraged" >They tried to apply and were discouraged from applying by DSS.</option>
+    <option value="MAWaiting" >They applied and they have not received an answer.</option>
+    <option value="MADenied" >They applied but were denied.</option>
+    <option value="MATerminated" >They have been recently terminated.</option>
+    <option value="MANoApp" >No, they have not applied.</option>
+    <option value="MAImmigration" >No, they have not applied and are worried about immigrant eligibility or public charge.</option>
+</select>
+
+<!-- Disability Questions --> 
+
+<label for="DisabilityYN" id=DisabilityYNLabel style="display: none" class="label">Does the patient currently have SSI or SSDI?</label>
+<select id="DisabilityYN" name="DisabilityYN" style="display: none" onchange='generate()' class="dropdown">
+   <option value="">-- choose one -- 
+    <option value="Yes" >Yes</option>
+    <option value="No" >No</option>
+</select>
+
+<label for="DYes" id=DYesLabel style="display: none" class="label">Did they have their benefits terminated, reduced, or were told they have an overpayment in the last 60 days?</label>
+<select id="DYes" name="DYes" style="display: none" onchange='generate()' class="dropdown">
+   <option value="">-- choose one -- 
+    <option value="DTermination" >Termination</option>
+    <option value="DReduction" >Reduction</option>
+    <option value="DOverpayment" >Overpayment</option>
+</select>
+
+<label for="DNo" id=DNoLabel style="display: none" class="label">Have they applied?</label>
+<select id="DNo" name="DNo" style="display: none" onchange='generate()' class="dropdown">
+   <option value="">-- choose one -- 
+    <option value="Yes" >Yes</option>
+    <option value="No" >No</option>
+</select>
+
+<label for="DAppYes" id=DAppYesL style="display: none" class="label">What happened to the application?</label>
+<select id="DAppYes" name="DAppYes" style="display: none" onchange='generate()' class="dropdown">
+   <option value="">-- choose one -- 
+    <option value="Waiting" >Waiting on Response</option>
+    <option value="Denied60" >Denied in the Past 60 Days</option>
+    <option value="Denied61" >Denied Over 60 Days Ago</option>
+</select>
+
+<!-- Food Questions -->
+
+<label for="F1" id=F1L style="display: none" class="label">Does the patient have FNS or WIC?</label>
+<select id="F1" name="F1" style="display: none" onchange='generate()' class="dropdown">
+   <option value="">-- choose one -- 
+    <option value="F1Y" >Yes</option>
+    <option value="F1N" >No</option>
+    <option value="F1W" >Had but lost it.</option>
+</select>
+
+<label for="F2" id=F2L style="display: none" class="label">What issue are they having?</label>
+<select id="F2" name="F2" style="display: none" onchange='generate()' class="dropdown">
+    <option value="">-- choose one -- 
+    <option value="F21" >Termination</option>
+    <option value="F22" >Reduction</option>
+    <option value="F23" >Overpayment</option>
+    <option value="F24" >Other</option>
+</select>
+
+<label for="F5" id=F5L style="display: none" class="label">Have they tried to apply, or were terminated within last 90 days?</label>
+<select id="F5" name="F5" style="display: none" onchange='generate()' class="dropdown">
+    <option value="">-- choose one -- 
+    <option value="F51" >Have applied.</option>
+    <option value="F52" >Have not applied.</option>
+    <option value="F53" >Terminated within 90 days.</option>
+    <option value="F54" >Terminated over 90 days ago.</option>
+</select>
+
+<label for="F6" id=F6L style="display: none" class="label">What happened to the application?</label>
+<select id="F6" name="F6" style="display: none" onchange='generate()' class="dropdown">
+    <option value="">-- choose one -- 
+    <option value="F61" >They are still waiting.</option>
+    <option value="F62" >They were discouraged by a DSS rep from applying.</option>
+    <option value="F63" >They were denied.</option>
+</select>
+
+<label for="F7" id=F7L style="display: none" class="label">Was the denial or termination within the last 90 days?</label>
+<select id="F7" name="F7" style="display: none" onchange='generate()' class="dropdown">
+    <option value="">-- choose one -- 
+    <option value="F71" >Yes.</option>
+    <option value="F72" >No.</option>
+</select>
+
+<!--Housing Questions -->
+
+<label for="H1" id=H1L style="display: none" class="label">Has the patient received court papers/notice to vacate? Or were they threatened with or fear imminent eviction?</label>
+<select id="H1" name="H1" style="display: none" onchange='generate()' class="dropdown">
+    <option value="">-- choose one -- 
+    <option value="H11" >They've received papers.</option>
+    <option value="H12" >Threat/fear of eviction.</option>
+</select>
+
+<label for="H3" id=H3L style="display: none" class="label">Has the patient/family asked the landlord to make repairs?</label>
+<select id="H3" name="H3" style="display: none" onchange='generate()' class="dropdown">
+    <option value="">-- choose one -- 
+    <option value="H31" >Yes, and the landlord has not taken action.</option>
+    <option value="H32" >No.</option>
+    <option value="H32" >No, patient fears retaliation from the landlord.</option>
+</select>
+
+<label for="H5" id=H5L style="display: none" class="label">Which of the following is the problem?</label>
+<select id="H5" name="H5" style="display: none" onchange='generate()' class="dropdown">
+    <option value="">-- choose one -- 
+    <option value="H51" >Mortgage Foreclosue</option>
+    <option value="H52" >Disaster Relief</option>
+    <option value="H53" >Housing Discrimination</option>
+    <option value="H54" >Accommodations for Disability</option>
+    <option value="H55" >None of the Above</option>
+</select>
+
+<!-- Family Questions -->
+
+<label for="FA1" id=FA1L style="display: none" class="label">Which of the following applies?</label>
+<select id="FA1" name="FA1" style="display: none" onchange='generate()' class="dropdown">
+    <option value="">-- choose one -- 
+    <option value="FA11" >The patient knows that they want a protective order against a domestic abuser.</option>
+    <option value="FA12" >The patient needs information about their rights, such as the implications of a DV order.</option>
+    <option value="FA13" >The patient has an issue with a non-relative abuser (i.e. a stalker, harrassment).</option>
+</select>
+
+<label for="FA4" id=FA4L style="display: none" class="label">Which of the following is the issue?</label>
+<select id="FA4" name="FA4" style="display: none" onchange='generate()' class="dropdown">
+    <option value="">-- choose one -- 
+    <option value="FA41" >The patient only wants to contest the amount of their child support in court.</option>
+    <option value="FA42" >The patient is open to advice about their child support and their rights .</option>
+</select>
+
+
+
+<!-- Consumer Questions -->
+
+<label for="C1" id=C1L style="display: none" class="label">Is the patient being harassed by creditors, unable to pay their debts, or both?</label>
+<select id="C1" name="C" style="display: none" onchange='generate()' class="dropdown">
+    <option value="">-- choose one -- 
+    <option value="C11" >Harrassed by creditors.</option>
+    <option value="C12" >Unable to pay debts.</option>
+    <option value="C13" >Both.</option>    
+</select>
+
+
+<!-- Education Questions -->
+
+<!-- Individual Rights Questions -->
+
+<!-- Employment Questions -->
+
+  </div>
+</div>
+</FORM>
+
+<!-- Right Column -->
+
+<div class="split right">
+  <div class="centered2">
+  <h3 style="text-align:center; font-size:40px">Results, Resources, and Info</h3>
+  <P> This section will populate with information as you complete the assessment.</P>
+    
+<!-- SDOH Blurbs -->
+    
+    <P id="cblurb" style="display: none">
+      <b>SDOH Fact:</b> Debt causes toxic stress.</P>
+
+<P id="hblurb1" style="display: none"> <B>Facts About Food Insecurity as an SDOH:</B>
+<br><br>
+Poor housing conditions are linked to a multitude of poor health outcomes:
+<br><br>
+-Aggravation of asthma, allergies, bug bites, lead poisoning​
+<br><br>
+-Fires, electrocution, other physical injury​
+<br><br>
+-Tradeoffs between necessities (“heat or eat”), malnutrition, poor growth, arthritis pain, etc.​
+<br><br>
+-Behavioral issues, more common contraction of infectious disease, toxic stress​
+<br><br>
+</P>
+
+<P id="fblurb" style="display: none">
+<B>Facts About Food Insecurity as an SDOH:</B><br><br>
+Children who live in households that are food insecure, even at the lowest levels, are likely to be sick more often, recover from illness more slowly, and be hospitalized more frequently.​
+<br><br>
+Lack of adequate healthy food can result in:​
+<br><br>
+-Reduced cognitive functioning​<br>
+-Impaired ability to concentrate and perform well in school<br>
+-Higher levels of behavioral and emotional problems from preschool through adolescence, and<br>
+-Developmental delays
+<br><br>
+Childhood malnutrition linked to adult diseases, including diabetes, hyperlipidemia and cardiovascular disease​
+<br><br>
+A recent study found that 30% of hospital “super-utilizers” were food insecure and another 25% marginally food secure by USDA definition, much higher than national average ​
+<br><br>
+</P>
+
+<P id="iblurb" style="display: none">
+<B>Facts About Underinsurance as an SDOH:</B>
+<br><br>
+Uninsured children are at greater risk for developmental delays that adversely affect educational achievement
+<br><br>
+People without insurance are more likely to:
+<br><br>
+-Have worse health outcomes, lower quality of life, and higher mortality rates<br>
+-Be diagnosed at later stages of their disease, when it is more difficult and expensive to treat their health conditions.<br>
+-Rely on emergency departments for routine care.<br>
+-Experience substantial economic and psychological stress due to health risks and financial uncertainty caused by the lack of health insurance<br>
+-People without insurance are less likely to receive preventive care, dental care, chronic disease management, and mental health care.
+<br><br>
+They are less likely to return for follow-up on visits, adhere to plans of care.
+<br><br>
+</P>
+
+<!-- Insurance -->
+
+<P id="OtherInsIDK" style="display: none"> <B> Your Action: </B><br><br>If this issue involves medical debt, please refer to MLP. For other issues, please conduct a de-identified consultation with your MLP point of contact to see if we can assist with this insurance issue.</P>
+<P id="MAImmigration" style="display: none"> <B> Your Action: </B><br><br>Make a referral to MLP. Legal Aid can advise the family on eligibility for programs and help explain public charge.</P>
+<P id="MANoApp" style="display: none"> <B> Your Action: </B><br><br>Advise the patient to apply at their local DSS or online. Follow up on the result if possible and refer if necessary.</P>
+<P id="MATerminated" style="display: none"> <B> Your Action: </B><br><br>If the termination occurred in the past 60 days, make a referral to MLP.</P>
+<P id="MAWaiting" style="display: none"> <B> Your Action: </B><br><br>Patients should get an answer within 45 days if their application does not involve a disability determination, and 90 days if their application requires a disability determination. If this window has passed, refer to MLP.</P>
+<P id="MADenied" style="display: none"> <B> Your Action: </B><br><br>If the denial was within the last 60 days, make a referral to MLP.</P>
+<P id="uninsured" style="display: none"> <B> Your Action: </B><br><br>If the patient could be Medicaid eligible, instruct them to apply. If they are not Medicaid eligible and they have legal status (i.r., citizen or permanent resident), Legal Aid may be able to connect them to a navigator for ACA coverage. In this case, make a referral.</P>
+<P id="consult" style="display: none"> <B> Your Action: </B><br><br>Consult. </P>
+<P id="ACAAns" style="display: none"> <B> Your Action: </B><br><br>Make a referral, Legal Aid can connect patient to a navigator to assist. </P>
+<P id="MedicareAns" style="display: none"> <B> Your Action: </B><br><br>Make a referral. LANC can assist with the following Medicare issues. Blurb about SLP, etc. </P>
+<P id="MAPriorityIssue" style="display: none"> <B> Your Action: </B><br><br>Make a referral to MLP.</P>
+<P id="MAOtherIssue" style="display: none"> <B> Your Action: </B><br><br>Reach out to local MLP point of contact for a de-identified consultation on this issue before making a referral.</P>
+
+<!-- WorkFirst -->
+
+<P id="W81" style="display: none"> <B> Your Action: </B><br><br>Follow up with the patient, and refer if denied.</P>
+<P id="W82" style="display: none"> <B> Your Action: </B><br><br>Make a referral. </P>
+<P id="W83" style="display: none"> <B> Your Action: </B><br><br>The patient has missed their appeal period. Instruct them to reapply. </P>
+<P id="W84" style="display: none"> <B> Your Action: </B><br><br>Legal Aid does not assist with initial applications. Make a referral if they were discouraged or need to know about their rights to benefits. Otherwise, refer them to a social worker, DSS, or another resource. </P>
+<P id="W31" style="display: none"> <B> Your Action: </B><br><br>Make a referral. </P>
+<P id="W32" style="display: none"> <B> Your Action: </B><br><br>Make a referral. </P>
+<P id="W33" style="display: none"> <B> Your Action: </B><br><br>Make a referral. </P>
+<P id="W34" style="display: none"> <B> Your Action: </B><br><br>Consult. </P>
+
+<!-- Disability -->
+
+<P id="WaitingA" style="display: none"> <B> Your Action: </B><br><br>Disability determinations can take up to five months. Follow up with your patient about the result and reassess after Social Security makes a decision. Direct patient to SSA.gov for more info.</P>
+<P id="DNoApp" style="display: none"> <B> Your Action: </B><br><br>Direct the patient to apply with their local SSA office. See SSA.gov for more information. </P>
+<P id="DSecond" style="display: none"> <B> Your Action: </B><br><br>Send a referral to Legal Aid through MLP. Advise the patient that they will be getting a call from MLP, and to have their Social Security documents ready.</P>
+<P id="DOver60" style="display: none"> <B> Your Action: </B><br><br>The patient has missed their appeal period. Instruct them to reapply if they would still like to pursue Social Security disability benefits. </P>
+<P id="DIn60" style="display: none"> <B> Your Action: </B><br><br>Refer the patient to LANC's MLP. Advise them that MLP will be calling, and that they should have their Social Security documents ready. </P>
+<P id="DRefer" style="display: none"> <B> Your Action: </B><br><br>Refer the patient to LANC's MLP. Advise them that MLP will be calling, and that they should have their Social Security documents ready. </P>  
+
+<!-- Food -->
+
+<P id="F31" style="display: none"> <B> Your Action: </B><br><br>Make a referral. Click here to access the referral system through EPIC, launch NCCARE360, etc.
+  <br><br>
+  <B>What Legal Aid Can Do:</B>
+  <br><br>
+  Advise on patient's right to benefits, negotiate with DSS case workers, represent at appeal hearings.
+  <br><br>
+  <B>Resources:</B><br><br> If the patient has an immediate need for food, <a href="https://nc211.org/">click here to search for a food bank with NC 211.</a>
+  </P>
+<P id="F32" style="display: none"> <B> Your Action: </B><br><br>Make a referral. Click here to access the referral system through EPIC, launch NCCARE360, etc.
+  <br><br>
+  <B>What Legal Aid Can Do:</B>
+  <br><br>
+  Advise on patient's right to benefits, negotiate with DSS case workers, represent at appeal hearings.
+  <br><br>  
+  <B>Resources:</B><br><br> If the patient has an immediate need for food, <a href="https://nc211.org/">click here to search for a food bank with NC 211.</a>
+  </P>
+<P id="F33" style="display: none"> <B> Your Action: </B><br><br>Make a referral. Click here to access the referral system through EPIC, launch NCCARE360, etc.
+  <br><br>
+  <B>What Legal Aid Can Do:</B>
+  <br><br>
+  Advise on patient's right to benefits, negotiate with DSS case workers, represent at appeal hearings.
+  <br><br>
+  <B>Resources:</B><br><br> If the patient has an immediate need for food, <a href="https://nc211.org/">click here to search for a food bank with NC 211.</a>
+  </P>
+<P id="F34" style="display: none"> <B> Your Action: </B><br><br>Consult. Click here to access LANC MLP's directory to find your point of contact.
+  <br><br>
+  <B>Resources:</B><br><br> If the patient has an immediate need for food, <a href="https://nc211.org/">click here to search for a food bank with NC 211.</a>
+  </P>
+<P id="F81" style="display: none"> <B> Your Action: </B><br><br>Follow up with the patient, and make a referral if denied.
+  <br><br>
+  <B>Resources:</B><br><br> If the patient has an immediate need for food, <a href="https://nc211.org/">click here to search for a food bank with NC 211.</a>
+  </P>
+<P id="F82" style="display: none"> <B> Your Action: </B><br><br>Make a referral. Click here to access the referral system through EPIC, launch NCCARE360, etc.
+  <br><br>
+  <B>Resources:</B><br><br> If the patient has an immediate need for food, <a href="https://nc211.org/">click here to search for a food bank with NC 211.</a>
+  </P>
+<P id="F83" style="display: none"> <B> Your Action: </B><br><br>The patient has missed their appeal period. Instruct them to reapply.
+  <br><br>
+  <B>Resources:</B> <br><br>If the patient has an immediate need for food, <a href="https://nc211.org/">click here to search for a food bank with NC 211.</a>
+  </P>
+<P id="F84" style="display: none"> <B> Your Action: </B><br><br>Legal Aid does not assist with initial applications. Make a referral if they were discouraged or need to know about their rights to benefits. Otherwise, refer them to a social worker, DSS, or another resource. They can apply for food stamps at <a href="https://ncfast.nc.gov/Curam/logon.jsp"> NCFAST.</a>
+  <br><br>
+  <B>Resources:</B><br><br> If the patient has an immediate need for food, <a href="https://nc211.org/">click here to search for a food bank with NC 211.</a>
+  </P>
+
+<!-- Family -->
+
+<P id="FA21" style="display: none"> <B> Your Action: </B><br><br>Refer patient to a local DV agency. </P>
+<P id="FA22" style="display: none"> <B> Your Action: </B><br><br>Make a referral. </P>
+<P id="FA23" style="display: none"> <B> Your Action: </B><br><br>Make a referral (with some 50C info). </P>
+<P id="FA31" style="display: none"> <B> Your Action: </B><br><br>Legal Aid does not have the capacity to assist with custody issues, unless it is necessary to resolve some other issue that we assist with. Insert self-help links here. </P>
+<P id="FA51" style="display: none"> Legal Aid cannot assist with this issue. Link to self-help materials. </P>
+<P id="FA52" style="display: none"> Make a referral. </P>
+
+<!-- Housing -->
+
+<P id="H41" style="display: none"> <B> Your Action: </B><br><br>Make a referral.</P>
+<P id="H42" style="display: none"> <B> Your Action: </B><br><br>Instruct the patient to contact their landlord. Inform the patient of how the conditions may negatively impact their health. Follow-up with patient and refer if issue persists. </P>
+<P id="H61" style="display: none"> <B> Your Action: </B><br><br>Make a referral. </P>
+<P id="H62" style="display: none"> <B> Your Action: </B><br><br>Consult. </P>
+<P id="H21" style="display: none"> <B> Your Action: </B><br><br>Make a referral. </P>
+<P id="H22" style="display: none"> <B> Your Action: </B><br><br>Know your rights material. Refer if need advice about their rights. Follow-up with patient next visit.</P>
+
+<!-- Consumer -->
+
+<P id="C21" style="display: none"> <B> Your Action: </B><br><br>Make a referral. LANC can help keep creditors from calling/harrassing patient. </P>
+<P id="C22" style="display: none"> <B> Your Action: </B><br><br>Make a referral. LANC can advise patient on their rights and advise them on issues like bankruptcy. LANC can assist with pursuing bankruptcy if it's their client's desire. </P>
+<P id="C23" style="display: none"> <B> Your Action: </B><br><br>Make a referral. LANC can help stop creditors from calling the patient.LANC can advise patient on their rights and advise them on issues like bankruptcy. LANC can assist with pursuing bankruptcy if it's their client's desire. </P>
+
+<!-- Education -->
+
+<P id="E1" style="display: none"> <B> Your Action: </B><br><br>Make a referral, explanation of our work on this issue, and links to resources. </P>
+<P id="E2" style="display: none"> <B> Your Action: </B><br><br>Make a referral, explanation of our work on this issue, and links to resources.  </P>
+<P id="E11" style="display: none"> <B> Your Action: </B><br><br>Make a referral, explanation of our work on this issue, and links to resources. </P>
+<P id="E12" style="display: none"> <B> Your Action: </B><br><br>Make a referral, explanation of our work on this issue, and links to resources.  </P>
+<P id="E13" style="display: none"> <B> Your Action: </B><br><br>Make a referral, explanation of our work on this issue, and links to resources.  </P>
+
+<!-- Indiv Rights -->
+
+<P id="I1" style="display: none"> <B> Your Action: </B><br><br>Make a referral, explanation of our work on this issue, and links to resources. </P>
+<P id="I2" style="display: none"> <B> Your Action: </B><br><br>Make a referral, explanation of our work on this issue, and links to resources.  </P>
+<P id="I3" style="display: none"> <B> Your Action: </B><br><br>Make a referral, explanation of our work on this issue, and links to resources.  </P>
+<P id="I4" style="display: none"> <B> Your Action: </B><br><br>Make a referral, explanation of our work on this issue, and links to resources.  </P>
+
+<!-- Employment -->
+
+<P id="EM1" style="display: none"> <B> Your Action: </B><br><br>Make a referral, explanation of our work on this issue, and links to resources. </P>
+<P id="EM2" style="display: none"> <B> Your Action: </B><br><br>Make a referral, explanation of our work on this issue, and links to resources.  </P>
+
+  </div>
+</div>
+
+<script>
+function generate() {
+
+//Insurance Logic Tree
+
+    if (document.getElementById('category').value == 'Health Insurance') {
+        document.getElementById('InsuredYN').style.display = 'block'
+        document.getElementById('InsuredYNLabel').style.display = 'block';
+    }
+    if (document.getElementById('InsuredYN').value == 'Yes') {
+        document.getElementById('InsY').style.display = 'block'
+        document.getElementById('InsYLabel').style.display = 'block';
+    }
+    if (document.getElementById('InsY').value == 'Private') {
+    	document.getElementById('OtherInsIDK').style.display = 'block';
+   	}   	   	
+    if (document.getElementById('InsY').value == 'OtherIns') {
+    	document.getElementById('OtherInsIDK').style.display = 'block';
+   	}   	   	
+   	if (document.getElementById('InsY').value == 'Medicaid') {
+    	document.getElementById('MedicaidYN').style.display = 'block'
+    	document.getElementById('MedicaidYNLabel').style.display = 'block';
+   	}   	
+   	if (document.getElementById('MedicaidYN').value == 'Yes') {
+    	document.getElementById('MedicaidY').style.display = 'block'
+    	document.getElementById('MedicaidYLabel').style.display = 'block';
+   	}  
+   	if (document.getElementById('MedicaidYN').value == 'No') {
+    	document.getElementById('MedicaidN').style.display = 'block'
+    	document.getElementById('MedicaidNLabel').style.display = 'block';
+   	}  
+    if (document.getElementById('MedicaidN').value == 'MADiscouraged') {
+    	document.getElementById('MAPriorityIssue').style.display = 'block'
+   	}
+   	if (document.getElementById('MedicaidN').value == 'MAWaiting') {
+    	document.getElementById('MAWaiting').style.display = 'block'
+   	}
+   	if (document.getElementById('MedicaidN').value == 'MAImmigration') {
+    	document.getElementById('MAImmigration').style.display = 'block'
+   	}
+   	if (document.getElementById('MedicaidN').value == 'MATerminated') {
+    	document.getElementById('MATerminated').style.display = 'block'
+   	}
+   	if (document.getElementById('MedicaidN').value == 'MADenied') {
+    	document.getElementById('MADenied').style.display = 'block'
+   	}
+   	if (document.getElementById('MedicaidY').value == 'MACustody') {
+    	document.getElementById('MAPriorityIssue').style.display = 'block'
+   	}
+   	if (document.getElementById('MedicaidN').value == 'MANoApp') {
+    	document.getElementById('MANoApp').style.display = 'block'
+   	}
+   	if (document.getElementById('MedicaidY').value == 'MALTC') {
+    	document.getElementById('MAPriorityIssue').style.display = 'block'
+   	}
+   	if (document.getElementById('MedicaidY').value == 'MAServiceDenial') {
+    	document.getElementById('MAPriorityIssue').style.display = 'block'
+   	}
+   	if (document.getElementById('MedicaidY').value == 'MAReduction') {
+    	document.getElementById('MAPriorityIssue').style.display = 'block'
+   	}
+   	if (document.getElementById('MedicaidY').value =='MAManagedCare') {
+    	document.getElementById('MAPriorityIssue').style.display = 'block'
+   	}
+   	if (document.getElementById('InsuredYN').value =='No') {
+    	document.getElementById('uninsured').style.display = 'block'
+   	}
+   	if (document.getElementById('InsY').value =='OtherIns') {
+    	document.getElementById('consult').style.display = 'block'
+   	}
+   	if (document.getElementById('InsY').value =='ACA') {
+    	document.getElementById('ACAAns').style.display = 'block'
+    }
+   	if (document.getElementById('InsY').value =='Medicare') {
+    	document.getElementById('MedicareAns').style.display = 'block'
+    }
+      
+// Disability Logic Tree
+
+    if (document.getElementById('category').value == 'Disability') {
+        document.getElementById('DisabilityYN').style.display = 'block'
+        document.getElementById('DisabilityYNLabel').style.display = 'block';
+  	}
+    if (document.getElementById('DisabilityYN').value == 'Yes') {
+        document.getElementById('DYes').style.display = 'block'
+        document.getElementById('DYesLabel').style.display = 'block';
+    }
+    if (document.getElementById('DisabilityYN').value == 'No') {
+        document.getElementById('DNo').style.display = 'block'
+        document.getElementById('DNoLabel').style.display = 'block';
+    }    
+    if (document.getElementById('DNo').value == 'Yes') {
+        document.getElementById('DAppYes').style.display = 'block'
+        document.getElementById('DAppYesL').style.display = 'block';
+    }     
+    if (document.getElementById('DAppYes').value == 'Waiting') {
+    	document.getElementById('WaitingA').style.display = 'block';
+    }
+    if (document.getElementById('DYes').value == 'DTermination') {
+    	document.getElementById('DRefer').style.display = 'block';  
+    }
+    if (document.getElementById('DYes').value == 'DReduction') {
+    	document.getElementById('DRefer').style.display = 'block';  
+    }
+    if (document.getElementById('DYes').value == 'DOverpayment') {
+    	document.getElementById('DRefer').style.display = 'block';  
+    }  
+    if (document.getElementById('DNo').value == 'No') {
+    	document.getElementById('DNoApp').style.display = 'block';
+    }
+    if (document.getElementById('DAppYes').value == 'Denied60') {
+        document.getElementById('DSecond').style.display = 'block'
+    }
+    if (document.getElementById('DAppYes').value == 'Denied61') {
+        document.getElementById('DOver60').style.display = 'block'
+    }
+
+// WorkFirst Logic Tree
+
+    if (document.getElementById('category').value == 'WorkFirst') {
+    	document.getElementById('W1').style.display = 'block';
+      document.getElementById('W1L').style.display = 'block';
+   	}
+    if (document.getElementById('W1').value == 'W1Y') {
+    	document.getElementById('W2').style.display = 'block';
+      document.getElementById('W2L').style.display = 'block';
+   	}
+    if (document.getElementById('W2').value == 'W21') {
+    	document.getElementById('W31').style.display = 'block';
+    }
+    if (document.getElementById('W2').value == 'W22') {
+    	document.getElementById('W32').style.display = 'block';
+    }
+    if (document.getElementById('W2').value == 'W23') {
+    	document.getElementById('W33').style.display = 'block';
+    }
+    if (document.getElementById('W2').value == 'W24') {
+    	document.getElementById('W34').style.display = 'block';
+    }
+    if (document.getElementById('W1').value == 'W1N') {
+    	document.getElementById('W5').style.display = 'block';
+      document.getElementById('W5L').style.display = 'block';
+   	}
+    if (document.getElementById('W5').value == 'W51') {
+    	document.getElementById('W6').style.display = 'block';
+      document.getElementById('W6L').style.display = 'block';
+   	}
+    if (document.getElementById('W6').value == 'W61') {
+    	document.getElementById('W81').style.display = 'block';
+   	}
+    if (document.getElementById('W6').value == 'W62') {
+    	document.getElementById('W82').style.display = 'block';
+   	}
+    if (document.getElementById('W6').value == 'W63') {
+    	document.getElementById('W7').style.display = 'block';
+      document.getElementById('W7L').style.display = 'block';
+   	}
+    if (document.getElementById('W7').value == 'W71') {
+    	document.getElementById('W82').style.display = 'block';
+   	}
+    if (document.getElementById('W7').value == 'W72') {
+    	document.getElementById('W83').style.display = 'block';
+   	}
+    if (document.getElementById('W1').value == 'W1W') {
+    	document.getElementById('W7').style.display = 'block';
+      document.getElementById('W7L').style.display = 'block';
+   	}
+    if (document.getElementById('W5').value == 'W52') {
+    	document.getElementById('W84').style.display = 'block';
+   	}
+    if (document.getElementById('W5').value == 'W53') {
+    	document.getElementById('W82').style.display = 'block';
+   	}
+    if (document.getElementById('W5').value == 'W54') {
+    	document.getElementById('W83').style.display = 'block';
+   	}    
+  
+
+//Food Insecurity Logic Tree
+
+    if (document.getElementById('category').value == 'Food Insecurity') {
+    	document.getElementById('F1').style.display = 'block';
+      document.getElementById('F1L').style.display = 'block';
+   	}
+    if (document.getElementById('F1').value == 'F1Y') {
+    	document.getElementById('F2').style.display = 'block';
+      document.getElementById('F2L').style.display = 'block';
+   	}
+    
+    if (document.getElementById('F2').value == 'F21') {
+    	document.getElementById('F31').style.display = 'block';
+    }
+    if (document.getElementById('F2').value == 'F22') {
+    	document.getElementById('F32').style.display = 'block';
+    }
+    if (document.getElementById('F2').value == 'F23') {
+    	document.getElementById('F33').style.display = 'block';
+    }
+    if (document.getElementById('F2').value == 'F24') {
+    	document.getElementById('F34').style.display = 'block';
+    }
+    if (document.getElementById('F1').value == 'F1N') {
+    	document.getElementById('F5').style.display = 'block';
+      document.getElementById('F5L').style.display = 'block';
+   	}
+    if (document.getElementById('F5').value == 'F51') {
+    	document.getElementById('F6').style.display = 'block';
+      document.getElementById('F6L').style.display = 'block';
+   	}
+    if (document.getElementById('F6').value == 'F61') {
+    	document.getElementById('F81').style.display = 'block';
+   	}
+    if (document.getElementById('F6').value == 'F62') {
+    	document.getElementById('F82').style.display = 'block';
+   	}
+    if (document.getElementById('F6').value == 'F63') {
+    	document.getElementById('F7').style.display = 'block';
+      document.getElementById('F7L').style.display = 'block';
+   	}
+    if (document.getElementById('F7').value == 'F71') {
+    	document.getElementById('F82').style.display = 'block';
+   	}
+    if (document.getElementById('F7').value == 'F72') {
+    	document.getElementById('F83').style.display = 'block';
+   	}
+    if (document.getElementById('F1').value == 'F1W') {
+    	document.getElementById('F7').style.display = 'block';
+      document.getElementById('F7L').style.display = 'block';
+   	}
+    if (document.getElementById('F5').value == 'F52') {
+    	document.getElementById('F84').style.display = 'block';
+   	}
+    if (document.getElementById('F5').value == 'F53') {
+    	document.getElementById('F82').style.display = 'block';
+   	}
+    if (document.getElementById('F5').value == 'F54') {
+    	document.getElementById('F83').style.display = 'block';
+   	}
+    
+// Housing Logic Tree
+
+    if (document.getElementById('category').value == 'Eviction') {
+    	document.getElementById('H1').style.display = 'block';
+      document.getElementById('H1L').style.display = 'block';
+   	}
+    if (document.getElementById('H1').value == 'H11') {
+    	document.getElementById('H21').style.display = 'block';
+   	}
+    if (document.getElementById('H1').value == 'H12') {
+    	document.getElementById('H22').style.display = 'block';
+   	}
+    
+    if (document.getElementById('category').value == 'Conditions') {
+    	document.getElementById('H3').style.display = 'block';
+      document.getElementById('H3L').style.display = 'block';
+   	}
+    
+    if (document.getElementById('H3').value == 'H31') {
+    	document.getElementById('H41').style.display = 'block';
+   	}
+    if (document.getElementById('H3').value == 'H32') {
+    	document.getElementById('H42').style.display = 'block';
+   	}
+    if (document.getElementById('H3').value == 'H33') {
+    	document.getElementById('H41').style.display = 'block';
+   	}
+    if (document.getElementById('category').value == 'Other Housing Issue') {
+    	document.getElementById('H5').style.display = 'block';
+      document.getElementById('H5L').style.display = 'block';
+   	}
+    if (document.getElementById('H5').value == 'H51') {
+    	document.getElementById('H61').style.display = 'block';
+   	}
+    if (document.getElementById('H5').value == 'H52') {
+    	document.getElementById('H62').style.display = 'block';
+   	}
+    if (document.getElementById('H5').value == 'H53') {
+    	document.getElementById('H61').style.display = 'block';
+   	}
+    if (document.getElementById('H5').value == 'H54') {
+    	document.getElementById('H61').style.display = 'block';
+   	}
+    if (document.getElementById('H5').value == 'H55') {
+    	document.getElementById('H62').style.display = 'block';
+   	}
+    
+// Family Logic Tree
+
+    if (document.getElementById('category').value == 'Domestic Violence') {
+    	document.getElementById('FA1').style.display = 'block';
+      document.getElementById('FA1L').style.display = 'block';
+   	}
+    if (document.getElementById('FA1').value == 'FA11') {
+    	document.getElementById('FA21').style.display = 'block';
+   	}
+    if (document.getElementById('FA1').value == 'FA12') {
+    	document.getElementById('FA22').style.display = 'block';
+   	}
+    if (document.getElementById('FA1').value == 'FA13') {
+    	document.getElementById('FA23').style.display = 'block';
+   	}
+    if (document.getElementById('category').value == 'Custody') {
+    	document.getElementById('FA31').style.display = 'block';
+   	}
+    if (document.getElementById('category').value == 'Child Support') {
+    	document.getElementById('FA4').style.display = 'block';
+      document.getElementById('FA4L').style.display = 'block';
+   	}
+    if (document.getElementById('FA4').value == 'FA41') {
+    	document.getElementById('FA51').style.display = 'block';
+   	}
+    if (document.getElementById('FA4').value == 'FA42') {
+    	document.getElementById('FA52').style.display = 'block';
+   	}
+
+// Individual Rights Logic Tree
+
+    if (document.getElementById('category').value == 'Wills and Powers of Attorney') {
+    	document.getElementById('I1').style.display = 'block';
+   	}
+    if (document.getElementById('category').value == 'Immigration') {
+    	document.getElementById('I2').style.display = 'block';
+   	}
+    if (document.getElementById('category').value == 'Expunction') {
+    	document.getElementById('I3').style.display = 'block';
+   	}
+   if (document.getElementById('category').value == 'Drivers License Restoration') {
+    	document.getElementById('I4').style.display = 'block';
+   	}
+    
+// Education Logic Tree
+
+    if (document.getElementById('category').value == 'Access to Special Education Services') {
+    	document.getElementById('E11').style.display = 'block';
+   	}
+    if (document.getElementById('category').value == 'Suspension/Expulsion') {
+    	document.getElementById('E12').style.display = 'block';
+   	}
+    if (document.getElementById('category').value == 'Bullying/Harrassment') {
+    	document.getElementById('E13').style.display = 'block';
+   	}
+    
+// Consumer Logic Tree
+
+    if (document.getElementById('category').value == 'Debt Collection') {
+    	document.getElementById('C1').style.display = 'block';
+      document.getElementById('C1L').style.display = 'block';
+    }
+    if (document.getElementById('C1').value == 'C11') {
+    	document.getElementById('C21').style.display = 'block';
+   	}
+    if (document.getElementById('C1').value == 'C12') {
+    	document.getElementById('C22').style.display = 'block';
+   	}
+    if (document.getElementById('C1').value == 'C13') {
+    	document.getElementById('C23').style.display = 'block';
+   	}
+// Employment Logic Tree
+
+    if (document.getElementById('category').value == 'Workers Compensation') {
+    	document.getElementById('EM1').style.display = 'block';
+   	}
+    if (document.getElementById('category').value == 'Unemployment Insurance') {
+    	document.getElementById('EM2').style.display = 'block';
+   	}
+
+// Blurbs
+
+    if (document.getElementById('category').value == 'Debt Collection') {
+    	document.getElementById('cblurb').style.display = 'block';
+    }
+    if (document.getElementById('category').value == 'Conditions') {
+    	document.getElementById('hblurb1').style.display = 'block';
+    }
+    if (document.getElementById('category').value == 'Food Insecurity') {
+    	document.getElementById('fblurb').style.display = 'block';
+    }
+    if (document.getElementById('category').value == 'Health Insurance') {
+    	document.getElementById('iblurb').style.display = 'block';
+    }
+}
+</script>
+
+
+
+</body>
+</html>
