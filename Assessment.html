@@ -3,11 +3,11 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
- 
+
 .body {
   font-size: 20px;
 }
-  
+
 .dropbtn {
   background-color: #bbb;
   color: black;
@@ -74,7 +74,7 @@
 <div class="split left">
 
   <div class="centered">
-<h2 style="text-align:center; font-size:40px">LANC MLP Screening Assessment Tool</h2>  
+<h2 style="text-align:center; font-size:40px">LANC MLP Screening Assessment Tool</h2>
 <p name="instructions"> Use the menu below to move through the assessment. Please scroll down the list to see all options.
 <br>
 <br>
@@ -138,7 +138,7 @@ This tool will help you understand when to make a referral, and what LANC MLP ca
 
 <label for="W1" id=W1L style="display: none" class="label">Does the patient currently have WorkFirst?</label>
 <select id="W1" name="W1" style="display: none" onchange='generate()' class="dropdown">
-   <option value="">-- choose one -- 
+   <option value="">-- choose one --
     <option value="W1Y" >Yes</option>
     <option value="W1N" >No</option>
     <option value="W1W" >Had but lost it.</option>
@@ -146,7 +146,7 @@ This tool will help you understand when to make a referral, and what LANC MLP ca
 
 <label for="W2" id=W2L style="display: none" class="label">What issue are they having?</label>
 <select id="W2" name="W2" style="display: none" onchange='generate()' class="dropdown">
-    <option value="">-- choose one -- 
+    <option value="">-- choose one --
     <option value="W21" >Termination</option>
     <option value="W22" >Reduction</option>
     <option value="W23" >Overpayment</option>
@@ -155,7 +155,7 @@ This tool will help you understand when to make a referral, and what LANC MLP ca
 
 <label for="W5" id=W5L style="display: none" class="label">Have they tried to apply, or were terminated within last 90 days?</label>
 <select id="W5" name="W5" style="display: none" onchange='generate()'class="dropdown">
-    <option value="">-- choose one -- 
+    <option value="">-- choose one --
     <option value="F51" >Have applied.</option>
     <option value="F52" >Have not applied.</option>
     <option value="F53" >Terminated within 90 days.</option>
@@ -164,7 +164,7 @@ This tool will help you understand when to make a referral, and what LANC MLP ca
 
 <label for="W6" id=W6L style="display: none" class="label">What happened to the application?</label>
 <select id="W6" name="W6" style="display: none" onchange='generate()'class="dropdown">
-    <option value="">-- choose one -- 
+    <option value="">-- choose one --
     <option value="F61" >They are still waiting.</option>
     <option value="F62" >They were discouraged by a DSS rep from applying.</option>
     <option value="F63" >They were denied.</option>
@@ -172,23 +172,23 @@ This tool will help you understand when to make a referral, and what LANC MLP ca
 
 <label for="W7" id=W7L style="display: none" class="label">Was the denial or termination within the last 90 days?</label>
 <select id="W7" name="W7" style="display: none" onchange='generate()' class="dropdown">
-    <option value="">-- choose one -- 
+    <option value="">-- choose one --
     <option value="F71" >Yes.</option>
     <option value="F72" >No.</option>
 </select>
 
-<!-- Insurance Questions --> 
+<!-- Insurance Questions -->
 
 <label for="InsuredYN" id=InsuredYNLabel style="display: none" class="label">Is the patient or their family member currently insured?</label>
 <select id="InsuredYN" name="InsuredYN" style="display: none" onchange='generate()'class="dropdown">
-   <option value="">-- choose one -- 
+   <option value="">-- choose one --
     <option value="Yes" >Yes</option>
     <option value="No" >No</option>
 </select>
 
 <label for="InsY" id=InsYLabel style="display: none"  class="label">What insurance program does the issue or question involve?</label>
 <select id="InsY" name="InsuredYN" style="display: none" onchange='generate()'class="dropdown">
-   <option value="">-- choose one -- 
+   <option value="">-- choose one --
     <option value="Medicaid" >Medicaid</option>
     <option value="Medicare" >Medicare</option>
     <option value="ACA" >Private Insurance - ACA Coverage</option>
@@ -198,14 +198,14 @@ This tool will help you understand when to make a referral, and what LANC MLP ca
 
 <label for="MedicaidYN" id=MedicaidYNLabel style="display: none" class="label">Does the patient currently have Medicaid?</label>
 <select id="MedicaidYN" name="MedicaidYN" style="display: none" onchange='generate()'class="dropdown">
-   <option value="">-- choose one -- 
+   <option value="">-- choose one --
     <option value="Yes" >Yes</option>
     <option value="No" >No</option>
 </select>
 
 <label for="MedicaidY" id=MedicaidYLabel style="display: none" class="label">Which of the following situations apply?</label>
 <select id="MedicaidY" name="MedicaidY" style="display: none" onchange='generate()' class="dropdown">
-   <option value="">-- choose one -- 
+   <option value="">-- choose one --
     <option value="MAServiceDenial" >Medical Service Denial in Last 60 Days</option>
     <option value="MAReduction" >Reduction in Coverage in Last 60 Days</option>
     <option value="MAManagedCare" >Denied Change of Managed Care Plan in Last 30 Days</option>
@@ -215,7 +215,7 @@ This tool will help you understand when to make a referral, and what LANC MLP ca
 
 <label for="MedicaidN" id=MedicaidNLabel style="display: none" class="label">Has the patient attempted to apply or has been recently terminated?</label>
 <select id="MedicaidN" name="MedicaidN" style="display: none" onchange='generate()' class="dropdown">
-   <option value="">-- choose one -- 
+   <option value="">-- choose one --
     <option value="MADiscouraged" >They tried to apply and were discouraged from applying by DSS.</option>
     <option value="MAWaiting" >They applied and they have not received an answer.</option>
     <option value="MADenied" >They applied but were denied.</option>
@@ -224,18 +224,18 @@ This tool will help you understand when to make a referral, and what LANC MLP ca
     <option value="MAImmigration" >No, they have not applied and are worried about immigrant eligibility or public charge.</option>
 </select>
 
-<!-- Disability Questions --> 
+<!-- Disability Questions -->
 
 <label for="DisabilityYN" id=DisabilityYNLabel style="display: none" class="label">Does the patient currently have SSI or SSDI?</label>
 <select id="DisabilityYN" name="DisabilityYN" style="display: none" onchange='generate()' class="dropdown">
-   <option value="">-- choose one -- 
+   <option value="">-- choose one --
     <option value="Yes" >Yes</option>
     <option value="No" >No</option>
 </select>
 
 <label for="DYes" id=DYesLabel style="display: none" class="label">Did they have their benefits terminated, reduced, or were told they have an overpayment in the last 60 days?</label>
 <select id="DYes" name="DYes" style="display: none" onchange='generate()' class="dropdown">
-   <option value="">-- choose one -- 
+   <option value="">-- choose one --
     <option value="DTermination" >Termination</option>
     <option value="DReduction" >Reduction</option>
     <option value="DOverpayment" >Overpayment</option>
@@ -243,14 +243,14 @@ This tool will help you understand when to make a referral, and what LANC MLP ca
 
 <label for="DNo" id=DNoLabel style="display: none" class="label">Have they applied?</label>
 <select id="DNo" name="DNo" style="display: none" onchange='generate()' class="dropdown">
-   <option value="">-- choose one -- 
+   <option value="">-- choose one --
     <option value="Yes" >Yes</option>
     <option value="No" >No</option>
 </select>
 
 <label for="DAppYes" id=DAppYesL style="display: none" class="label">What happened to the application?</label>
 <select id="DAppYes" name="DAppYes" style="display: none" onchange='generate()' class="dropdown">
-   <option value="">-- choose one -- 
+   <option value="">-- choose one --
     <option value="Waiting" >Waiting on Response</option>
     <option value="Denied60" >Denied in the Past 60 Days</option>
     <option value="Denied61" >Denied Over 60 Days Ago</option>
@@ -260,7 +260,7 @@ This tool will help you understand when to make a referral, and what LANC MLP ca
 
 <label for="F1" id=F1L style="display: none" class="label">Does the patient have FNS or WIC?</label>
 <select id="F1" name="F1" style="display: none" onchange='generate()' class="dropdown">
-   <option value="">-- choose one -- 
+   <option value="">-- choose one --
     <option value="F1Y" >Yes</option>
     <option value="F1N" >No</option>
     <option value="F1W" >Had but lost it.</option>
@@ -268,7 +268,7 @@ This tool will help you understand when to make a referral, and what LANC MLP ca
 
 <label for="F2" id=F2L style="display: none" class="label">What issue are they having?</label>
 <select id="F2" name="F2" style="display: none" onchange='generate()' class="dropdown">
-    <option value="">-- choose one -- 
+    <option value="">-- choose one --
     <option value="F21" >Termination</option>
     <option value="F22" >Reduction</option>
     <option value="F23" >Overpayment</option>
@@ -277,7 +277,7 @@ This tool will help you understand when to make a referral, and what LANC MLP ca
 
 <label for="F5" id=F5L style="display: none" class="label">Have they tried to apply, or were terminated within last 90 days?</label>
 <select id="F5" name="F5" style="display: none" onchange='generate()' class="dropdown">
-    <option value="">-- choose one -- 
+    <option value="">-- choose one --
     <option value="F51" >Have applied.</option>
     <option value="F52" >Have not applied.</option>
     <option value="F53" >Terminated within 90 days.</option>
@@ -286,7 +286,7 @@ This tool will help you understand when to make a referral, and what LANC MLP ca
 
 <label for="F6" id=F6L style="display: none" class="label">What happened to the application?</label>
 <select id="F6" name="F6" style="display: none" onchange='generate()' class="dropdown">
-    <option value="">-- choose one -- 
+    <option value="">-- choose one --
     <option value="F61" >They are still waiting.</option>
     <option value="F62" >They were discouraged by a DSS rep from applying.</option>
     <option value="F63" >They were denied.</option>
@@ -294,7 +294,7 @@ This tool will help you understand when to make a referral, and what LANC MLP ca
 
 <label for="F7" id=F7L style="display: none" class="label">Was the denial or termination within the last 90 days?</label>
 <select id="F7" name="F7" style="display: none" onchange='generate()' class="dropdown">
-    <option value="">-- choose one -- 
+    <option value="">-- choose one --
     <option value="F71" >Yes.</option>
     <option value="F72" >No.</option>
 </select>
@@ -303,14 +303,14 @@ This tool will help you understand when to make a referral, and what LANC MLP ca
 
 <label for="H1" id=H1L style="display: none" class="label">Has the patient received court papers/notice to vacate? Or were they threatened with or fear imminent eviction?</label>
 <select id="H1" name="H1" style="display: none" onchange='generate()' class="dropdown">
-    <option value="">-- choose one -- 
+    <option value="">-- choose one --
     <option value="H11" >They've received papers.</option>
     <option value="H12" >Threat/fear of eviction.</option>
 </select>
 
 <label for="H3" id=H3L style="display: none" class="label">Has the patient/family asked the landlord to make repairs?</label>
 <select id="H3" name="H3" style="display: none" onchange='generate()' class="dropdown">
-    <option value="">-- choose one -- 
+    <option value="">-- choose one --
     <option value="H31" >Yes, and the landlord has not taken action.</option>
     <option value="H32" >No.</option>
     <option value="H32" >No, patient fears retaliation from the landlord.</option>
@@ -318,7 +318,7 @@ This tool will help you understand when to make a referral, and what LANC MLP ca
 
 <label for="H5" id=H5L style="display: none" class="label">Which of the following is the problem?</label>
 <select id="H5" name="H5" style="display: none" onchange='generate()' class="dropdown">
-    <option value="">-- choose one -- 
+    <option value="">-- choose one --
     <option value="H51" >Mortgage Foreclosue</option>
     <option value="H52" >Disaster Relief</option>
     <option value="H53" >Housing Discrimination</option>
@@ -330,7 +330,7 @@ This tool will help you understand when to make a referral, and what LANC MLP ca
 
 <label for="FA1" id=FA1L style="display: none" class="label">Which of the following applies?</label>
 <select id="FA1" name="FA1" style="display: none" onchange='generate()' class="dropdown">
-    <option value="">-- choose one -- 
+    <option value="">-- choose one --
     <option value="FA11" >The patient knows that they want a protective order against a domestic abuser.</option>
     <option value="FA12" >The patient needs information about their rights, such as the implications of a DV order.</option>
     <option value="FA13" >The patient has an issue with a non-relative abuser (i.e. a stalker, harrassment).</option>
@@ -338,7 +338,7 @@ This tool will help you understand when to make a referral, and what LANC MLP ca
 
 <label for="FA4" id=FA4L style="display: none" class="label">Which of the following is the issue?</label>
 <select id="FA4" name="FA4" style="display: none" onchange='generate()' class="dropdown">
-    <option value="">-- choose one -- 
+    <option value="">-- choose one --
     <option value="FA41" >The patient only wants to contest the amount of their child support in court.</option>
     <option value="FA42" >The patient is open to advice about their child support and their rights .</option>
 </select>
@@ -349,10 +349,10 @@ This tool will help you understand when to make a referral, and what LANC MLP ca
 
 <label for="C1" id=C1L style="display: none" class="label">Is the patient being harassed by creditors, unable to pay their debts, or both?</label>
 <select id="C1" name="C" style="display: none" onchange='generate()' class="dropdown">
-    <option value="">-- choose one -- 
+    <option value="">-- choose one --
     <option value="C11" >Harrassed by creditors.</option>
     <option value="C12" >Unable to pay debts.</option>
-    <option value="C13" >Both.</option>    
+    <option value="C13" >Both.</option>
 </select>
 
 
@@ -372,13 +372,13 @@ This tool will help you understand when to make a referral, and what LANC MLP ca
   <div class="centered2">
   <h3 style="text-align:center; font-size:40px">Results, Resources, and Info</h3>
   <P> This section will populate with information as you complete the assessment.</P>
-    
+
 <!-- SDOH Blurbs -->
-    
+
     <P id="cblurb" style="display: none">
       <b>SDOH Fact:</b> Debt causes toxic stress.</P>
 
-<P id="hblurb1" style="display: none"> <B>Facts About Food Insecurity as an SDOH:</B>
+<P id="hblurb1" style="display: none"> <B>Facts About Housing as an SDOH:</B>
 <br><br>
 Poor housing conditions are linked to a multitude of poor health outcomes:
 <br><br>
@@ -459,7 +459,7 @@ They are less likely to return for follow-up on visits, adhere to plans of care.
 <P id="DSecond" style="display: none"> <B> Your Action: </B><br><br>Send a referral to Legal Aid through MLP. Advise the patient that they will be getting a call from MLP, and to have their Social Security documents ready.</P>
 <P id="DOver60" style="display: none"> <B> Your Action: </B><br><br>The patient has missed their appeal period. Instruct them to reapply if they would still like to pursue Social Security disability benefits. </P>
 <P id="DIn60" style="display: none"> <B> Your Action: </B><br><br>Refer the patient to LANC's MLP. Advise them that MLP will be calling, and that they should have their Social Security documents ready. </P>
-<P id="DRefer" style="display: none"> <B> Your Action: </B><br><br>Refer the patient to LANC's MLP. Advise them that MLP will be calling, and that they should have their Social Security documents ready. </P>  
+<P id="DRefer" style="display: none"> <B> Your Action: </B><br><br>Refer the patient to LANC's MLP. Advise them that MLP will be calling, and that they should have their Social Security documents ready. </P>
 
 <!-- Food -->
 
@@ -476,7 +476,7 @@ They are less likely to return for follow-up on visits, adhere to plans of care.
   <B>What Legal Aid Can Do:</B>
   <br><br>
   Advise on patient's right to benefits, negotiate with DSS case workers, represent at appeal hearings.
-  <br><br>  
+  <br><br>
   <B>Resources:</B><br><br> If the patient has an immediate need for food, <a href="https://nc211.org/">click here to search for a food bank with NC 211.</a>
   </P>
 <P id="F33" style="display: none"> <B> Your Action: </B><br><br>Make a referral. Click here to access the referral system through EPIC, launch NCCARE360, etc.
@@ -570,22 +570,22 @@ function generate() {
     }
     if (document.getElementById('InsY').value == 'Private') {
     	document.getElementById('OtherInsIDK').style.display = 'block';
-   	}   	   	
+   	}
     if (document.getElementById('InsY').value == 'OtherIns') {
     	document.getElementById('OtherInsIDK').style.display = 'block';
-   	}   	   	
+   	}
    	if (document.getElementById('InsY').value == 'Medicaid') {
     	document.getElementById('MedicaidYN').style.display = 'block'
     	document.getElementById('MedicaidYNLabel').style.display = 'block';
-   	}   	
+   	}
    	if (document.getElementById('MedicaidYN').value == 'Yes') {
     	document.getElementById('MedicaidY').style.display = 'block'
     	document.getElementById('MedicaidYLabel').style.display = 'block';
-   	}  
+   	}
    	if (document.getElementById('MedicaidYN').value == 'No') {
     	document.getElementById('MedicaidN').style.display = 'block'
     	document.getElementById('MedicaidNLabel').style.display = 'block';
-   	}  
+   	}
     if (document.getElementById('MedicaidN').value == 'MADiscouraged') {
     	document.getElementById('MAPriorityIssue').style.display = 'block'
    	}
@@ -631,7 +631,7 @@ function generate() {
    	if (document.getElementById('InsY').value =='Medicare') {
     	document.getElementById('MedicareAns').style.display = 'block'
     }
-      
+
 // Disability Logic Tree
 
     if (document.getElementById('category').value == 'Disability') {
@@ -645,23 +645,23 @@ function generate() {
     if (document.getElementById('DisabilityYN').value == 'No') {
         document.getElementById('DNo').style.display = 'block'
         document.getElementById('DNoLabel').style.display = 'block';
-    }    
+    }
     if (document.getElementById('DNo').value == 'Yes') {
         document.getElementById('DAppYes').style.display = 'block'
         document.getElementById('DAppYesL').style.display = 'block';
-    }     
+    }
     if (document.getElementById('DAppYes').value == 'Waiting') {
     	document.getElementById('WaitingA').style.display = 'block';
     }
     if (document.getElementById('DYes').value == 'DTermination') {
-    	document.getElementById('DRefer').style.display = 'block';  
+    	document.getElementById('DRefer').style.display = 'block';
     }
     if (document.getElementById('DYes').value == 'DReduction') {
-    	document.getElementById('DRefer').style.display = 'block';  
+    	document.getElementById('DRefer').style.display = 'block';
     }
     if (document.getElementById('DYes').value == 'DOverpayment') {
-    	document.getElementById('DRefer').style.display = 'block';  
-    }  
+    	document.getElementById('DRefer').style.display = 'block';
+    }
     if (document.getElementById('DNo').value == 'No') {
     	document.getElementById('DNoApp').style.display = 'block';
     }
@@ -730,8 +730,8 @@ function generate() {
    	}
     if (document.getElementById('W5').value == 'W54') {
     	document.getElementById('W83').style.display = 'block';
-   	}    
-  
+   	}
+
 
 //Food Insecurity Logic Tree
 
@@ -743,7 +743,7 @@ function generate() {
     	document.getElementById('F2').style.display = 'block';
       document.getElementById('F2L').style.display = 'block';
    	}
-    
+
     if (document.getElementById('F2').value == 'F21') {
     	document.getElementById('F31').style.display = 'block';
     }
@@ -793,7 +793,7 @@ function generate() {
     if (document.getElementById('F5').value == 'F54') {
     	document.getElementById('F83').style.display = 'block';
    	}
-    
+
 // Housing Logic Tree
 
     if (document.getElementById('category').value == 'Eviction') {
@@ -806,12 +806,12 @@ function generate() {
     if (document.getElementById('H1').value == 'H12') {
     	document.getElementById('H22').style.display = 'block';
    	}
-    
+
     if (document.getElementById('category').value == 'Conditions') {
     	document.getElementById('H3').style.display = 'block';
       document.getElementById('H3L').style.display = 'block';
    	}
-    
+
     if (document.getElementById('H3').value == 'H31') {
     	document.getElementById('H41').style.display = 'block';
    	}
@@ -840,7 +840,7 @@ function generate() {
     if (document.getElementById('H5').value == 'H55') {
     	document.getElementById('H62').style.display = 'block';
    	}
-    
+
 // Family Logic Tree
 
     if (document.getElementById('category').value == 'Domestic Violence') {
@@ -884,7 +884,7 @@ function generate() {
    if (document.getElementById('category').value == 'Drivers License Restoration') {
     	document.getElementById('I4').style.display = 'block';
    	}
-    
+
 // Education Logic Tree
 
     if (document.getElementById('category').value == 'Access to Special Education Services') {
@@ -896,7 +896,7 @@ function generate() {
     if (document.getElementById('category').value == 'Bullying/Harrassment') {
     	document.getElementById('E13').style.display = 'block';
    	}
-    
+
 // Consumer Logic Tree
 
     if (document.getElementById('category').value == 'Debt Collection') {
