@@ -83,7 +83,7 @@
 This tool will help you understand when to make a referral, and what LANC MLP can do to assist your patients.
 </p>
 
-<div style="text-align: center"><button onClick="window.location.reload();" class="dropbtn">Click Here to Reset this Form</button></p></div>
+<div style="text-align: center"><button style="border: 2px solid black" onClick="window.location.reload();" class="dropbtn">Click Here to Undo All Selections</button></p></div>
 
 
 <FORM name="assessment" class="form">
@@ -92,7 +92,7 @@ This tool will help you understand when to make a referral, and what LANC MLP ca
 <select name="category" id=category onchange='generate()' class="dropdown">
 	<option value="">-- choose one --
 	<optgroup label="Benefits">
-		<option value="Health Insurance">Health Insurance
+		<option value="Health Insurance">Health Insurance and Medicaid
 		<option value="Disability">Disability (SSI/SSDI)
 		<option value="Food Insecurity">Food Insecurity
     <option value="WorkFirst">WorkFirst
@@ -101,6 +101,7 @@ This tool will help you understand when to make a referral, and what LANC MLP ca
 	<optgroup label="Housing">
 		<option value="Eviction" >Eviction
 		<option value="Conditions" >Conditions
+    <option value="Subsidy" > Loss of Housing Subsidy or Voucher
 		<option value="Other Housing Issue" >Other Housing Issue
 	</optgroup>
     <optgroup><option></option></optgroup>
@@ -215,9 +216,10 @@ This tool will help you understand when to make a referral, and what LANC MLP ca
 <label for="MedicaidY" id=MedicaidYLabel style="display: none" class="label">Which of the following situations apply?</label>
 <select id="MedicaidY" name="MedicaidY" style="display: none" onchange='generate()' class="dropdown">
    <option value="">-- choose one --
-    <option value="MAServiceDenial" >Medical Service Denial in Last 60 Days</option>
+    <option value="MAServiceDenial" >Medical Service Denial in Last 30 Days</option>
     <option value="MAReduction" >Reduction in Coverage in Last 60 Days</option>
     <option value="MAManagedCare" >Denied Change of Managed Care Plan in Last 30 Days</option>
+    <option value="MAMissed" >Any of the Above, But Over 30/60 Days</option>
     <option value="MALTC" >Question about Medicaid Long-Term Care</option>
     <option value="MACustody" >Issue Accessing Benefits for Adopted Children</option>
 </select>
@@ -342,6 +344,24 @@ This tool will help you understand when to make a referral, and what LANC MLP ca
     <option value="H55" >None of the Above</option>
 </select>
 
+<label for="H10" id=H10L style="display: none" class="label">Which program was providng the subsidy?</label>
+<select id="H10" name="H10" style="display: none" onchange='generate()' class="dropdown">
+    <option value="">-- choose one --
+    <option value="H101" >Section 8</option>
+    <option value="H102" >Low Income Housing Tax Credit</option>
+    <option value="H103" >Transition to Indepent Living</option>
+    <option value="H104" >Other</option>
+</select>
+
+<label for="H11" id=H11L style="display: none" class="label">How long ago was the termination and has the patient appealed?</label>
+<select id="H11" name="H11" style="display: none" onchange='generate()' class="dropdown">
+    <option value="">-- choose one --
+    <option value="H111" >Within 30 Days</option>
+    <option value="H112" >After 30 Days/Patient Has Appealed</option>
+    <option value="H113" >After 30 Days/Patient Has Not Appealed</option>
+    <option value="H114" >I Don't Know</option>
+</select>
+
 <!-- Family Questions -->
 
 <label for="FA1" id=FA1L style="display: none" class="label">Which of the following applies?</label>
@@ -349,7 +369,7 @@ This tool will help you understand when to make a referral, and what LANC MLP ca
     <option value="">-- choose one --
     <option value="FA11" >The patient knows that they want a protective order against a domestic abuser.</option>
     <option value="FA12" >The patient needs information about their rights, such as the implications of a DV order.</option>
-    <option value="FA13" >The patient has an issue with a non-relative abuser (i.e. a stalker, harrassment).</option>
+    <option value="FA13" >The patient has an issue with a non-relative abuser who does not live with them (i.e. a stalker, harrassment).</option>
 </select>
 
 <label for="FA4" id=FA4L style="display: none" class="label">Which of the following is the issue?</label>
@@ -443,7 +463,8 @@ People without insurance are more likely to:
 <br><br>
 They are less likely to return for follow-up on visits, adhere to plans of care.
 <br><br>
-</P>
+
+<P id="dvblurb" style="display: none"><B>A "domestic abuser" for this purpose includes a spouse, dating partner, persons that have a child in common, parent/grandparent, or former household members.</B></P>
 
 <!-- Insurance -->
 
@@ -451,9 +472,9 @@ They are less likely to return for follow-up on visits, adhere to plans of care.
 <P id="MAImmigration" style="display: none"> <B> Your Action: </B><br><br>Make a referral to MLP. Legal Aid can advise the family on eligibility for programs and help explain public charge.</P>
 <P id="MANoAppA" style="display: none"> <B> Your Action: </B><br><br>Advise the patient to apply at their local DSS or online. Follow up on the result if possible and refer if necessary.</P>
 <P id="MATerminated" style="display: none"> <B> Your Action: </B><br><br>If the termination occurred in the past 60 days, make a referral to MLP.</P>
-<P id="MAWaiting" style="display: none"> <B> Your Action: </B><br><br>Patients should get an answer within 45 days if their application does not involve a disability determination, and 90 days if their application requires a disability determination. If this window has passed, refer to MLP.</P>
+<P id="MAWaiting" style="display: none"> <B> Your Action: </B><br><br>Patients should get an answer within 45 days if their application does not involve a disability determination, and 90 days if their application requires a disability determination. Instruct the patient that they can reach out to their local DSS office for an update. If there is a problem, refer to MLP.</P>
 <P id="MADenied" style="display: none"> <B> Your Action: </B><br><br>If the denial was within the last 60 days, make a referral to MLP.</P>
-<P id="uninsured" style="display: none"> <B> Your Action: </B><br><br>If the patient could be Medicaid eligible, instruct them to apply. If they are not Medicaid eligible and they have legal status (i.r., citizen or permanent resident), Legal Aid may be able to connect them to a navigator for ACA coverage. In this case, make a referral.</P>
+<P id="uninsured" style="display: none"> <B> Your Action: </B><br><br>If the patient could be Medicaid eligible, instruct them to apply with their local DSS office. If they are not Medicaid eligible and they have legal status (i.e., citizen or permanent resident), Legal Aid may be able to connect them to a navigator for ACA coverage. In this case, make a referral.</P>
 <P id="consult" style="display: none"> <B> Your Action: </B><br><br>Consult. </P>
 <P id="ACAAns" style="display: none"> <B> Your Action: </B><br><br>Make a referral, Legal Aid can connect patient to a navigator to assist. </P>
 <P id="MedicareAns" style="display: none"> <B> Your Action: </B><br><br>Make a referral. LANC can assist with the following Medicare issues. Blurb about SLP, etc. </P>
@@ -464,6 +485,7 @@ They are less likely to return for follow-up on visits, adhere to plans of care.
 <P id="MAServiceA" style="display: none"> <B> Your Action: </B><br><br>Make a referral to MLP.</P>
 <P id="MAReductionA" style="display: none"> <B> Your Action: </B><br><br>Make a referral to MLP.</P>
 <P id="MALTCA" style="display: none"> <B> Your Action: </B><br><br>Make a referral to MLP.</P>
+<P id="MAMissedApp" style="display: none"> <B> Your Action: </B><br><br>Patient has missed their appeal period. Link to resources.</P>
 
 <!-- WorkFirst -->
 
@@ -488,10 +510,10 @@ They are less likely to return for follow-up on visits, adhere to plans of care.
 
 <!-- Disability -->
 
-<P id="WaitingA" style="display: none"> <B> Your Action: </B><br><br>Disability determinations can take up to five months. Follow up with your patient about the result and reassess after Social Security makes a decision. Direct patient to SSA.gov for more info.</P>
+<P id="WaitingA" style="display: none"> <B> Your Action: </B><br><br>Disability determinations can take up to five months. Follow up with your patient about the result and reassess after Social Security makes a decision. Direct patient to contact SSA for a status update and to SSA.gov for more info. Remind them that it is important to appeal within 60 days if they are denied.</P>
 <P id="DNoApp" style="display: none"> <B> Your Action: </B><br><br>Direct the patient to apply with their local SSA office. See SSA.gov for more information. </P>
 <P id="DSecond" style="display: none"> <B> Your Action: </B><br><br>Send a referral to Legal Aid through MLP. Advise the patient that they will be getting a call from MLP, and to have their Social Security documents ready.</P>
-<P id="DOver60" style="display: none"> <B> Your Action: </B><br><br>The patient has missed their appeal period. Instruct them to reapply if they would still like to pursue Social Security disability benefits. </P>
+<P id="DOver60" style="display: none"> <B> Your Action: </B><br><br>The patient has missed their appeal period. If it's within 90 days, instruct them to seek a waiver from SSA to maintain their appeal. Otherwise, instruct them to reapply if they would still like to pursue Social Security disability benefits. </P>
 <P id="DIn60" style="display: none"> <B> Your Action: </B><br><br>Refer the patient to LANC's MLP. Advise them that MLP will be calling, and that they should have their Social Security documents ready. </P>
 <P id="DTerminated" style="display: none"> <B> Your Action: </B><br><br>Refer the patient to LANC's MLP. Advise them that MLP will be calling, and that they should have their Social Security documents ready. </P>
 <P id="DReduced" style="display: none"> <B> Your Action: </B><br><br>Refer the patient to LANC's MLP. Advise them that MLP will be calling, and that they should have their Social Security documents ready. </P>
@@ -527,7 +549,7 @@ They are less likely to return for follow-up on visits, adhere to plans of care.
   <br><br>
   <B>Resources:</B><br><br> If the patient has an immediate need for food, <a href="https://nc211.org/">click here to search for a food bank with NC 211.</a>
   </P>
-<P id="F81" style="display: none"> <B> Your Action: </B><br><br>Follow up with the patient, and make a referral if denied.
+<P id="F81" style="display: none"> <B> Your Action: </B><br><br>Follow up with the patient, and make a referral if denied. Inform patient that they have 90 days to appeal any negative decision.
   <br><br>
   <B>Resources:</B><br><br> If the patient has an immediate need for food, <a href="https://nc211.org/">click here to search for a food bank with NC 211.</a>
   </P>
@@ -579,8 +601,8 @@ They are less likely to return for follow-up on visits, adhere to plans of care.
 
 <P id="FA21" style="display: none"> <B> Your Action: </B><br><br>Refer patient to a local DV agency. </P>
 <P id="FA22" style="display: none"> <B> Your Action: </B><br><br>Make a referral. </P>
-<P id="FA23" style="display: none"> <B> Your Action: </B><br><br>Make a referral (with some 50C info). </P>
-<P id="FA31" style="display: none"> <B> Your Action: </B><br><br>Legal Aid does not have the capacity to assist with custody issues, unless it is necessary to resolve some other issue that we assist with. Insert self-help links here. </P>
+<P id="FA23" style="display: none"> <B> Your Action: </B><br><br>Make a referral. (with some 50C info). </P>
+<P id="FA31" style="display: none"> <B> Your Action: </B><br><br>Legal Aid does not have the capacity to assist with custody issues, unless it is necessary to resolve some other issue that we assist with. For example, domestic violence. Insert self-help links here. </P>
 <P id="FA51" style="display: none"> Legal Aid cannot assist with this issue. Link to self-help materials. </P>
 <P id="FA52" style="display: none"> Make a referral. </P>
 
@@ -597,6 +619,15 @@ They are less likely to return for follow-up on visits, adhere to plans of care.
 <P id="HDiscrim" style="display: none"> <B> Your Action: </B><br><br>Make a referral. </P>
 <P id="HCond1" style="display: none"> <B> Your Action: </B><br><br>Make a referral. </P>
 <P id="HCond2" style="display: none"> <B> Your Action: </B><br><br>Make a referral. </P>
+<P id="Sec830" style="display: none"> <B> Your Action: </B><br><br>Make a referral.</P>
+<P id="LIHTC" style="display: none"> <B> Your Action: </B><br><br>Make a referral. </P>
+<P id="Transition" style="display: none"> <B> Your Action: </B><br><br>Make a referral.</P>
+<P id="HOtherVoucher" style="display: none"> <B> Your Action: </B><br><br>Consult.</P>
+<P id="HIDK" style="display: none"> <B> Your Action: </B><br><br>Consult.</P>
+<P id="HWithin30" style="display: none"> <B> Your Action: </B><br><br>Make a referral. Advise the patient to have their documents ready for the attorney, such as their lease and termination notice.</P>
+<P id="H30App" style="display: none"> <B> Your Action: </B><br><br>Make a referral. Advise the patient to have their documents ready for the attorney, such as their lease and termination notice.</P>
+<P id="H30NoApp" style="display: none"> <B> Your Action: </B><br><br>Patient has missed their appeal period. Advise them to seek housing elsewhere, links to resources.</P>
+
 
 <!-- Consumer -->
 
@@ -767,6 +798,12 @@ function generate() {
     }
     else {
     	document.getElementById('MedicareAns').style.display = 'none';
+    }
+    if (document.getElementById('MedicaidY').value =='MAMissed') {
+    	document.getElementById('MAMissedApp').style.display = 'block'
+    }
+    else {
+    	document.getElementById('MAMissedApp').style.display = 'none';
     }
 
 // Disability Logic Tree
@@ -1191,6 +1228,65 @@ function generate() {
     else {
     	document.getElementById('H62').style.display = 'none';
     }
+    if (document.getElementById('category').value == 'Subsidy') {
+    	document.getElementById('H10').style.display = 'block';
+      document.getElementById('H10L').style.display = 'block';
+   	}
+    else {
+      document.getElementById('H10').style.display = 'none';
+      document.getElementById('H10L').style.display = 'none';
+    }
+    if (document.getElementById('H10').value == 'H101') {
+    	document.getElementById('H11').style.display = 'block';
+      document.getElementById('H11L').style.display = 'block';
+   	}
+    else {
+      document.getElementById('H11').style.display = 'none';
+      document.getElementById('H11L').style.display = 'none';
+    }
+    if (document.getElementById('H11').value == 'H111') {
+      document.getElementById('HWithin30').style.display = 'block';
+    }
+    else {
+      document.getElementById('HWithin30').style.display = 'none';
+    }
+    if (document.getElementById('H11').value == 'H112') {
+      document.getElementById('H30NoApp').style.display = 'block';
+    }
+    else {
+      document.getElementById('H30NoApp').style.display = 'none';
+    }
+    if (document.getElementById('H11').value == 'H113') {
+      document.getElementById('H30App').style.display = 'block';
+    }
+    else {
+      document.getElementById('H30App').style.display = 'none';
+    }
+    if (document.getElementById('H11').value == 'H114') {
+      document.getElementById('HIDK').style.display = 'block';
+    }
+    else {
+      document.getElementById('HIDK').style.display = 'none';
+    }
+    if (document.getElementById('H10').value == 'H102') {
+      document.getElementById('LIHTC').style.display = 'block';
+    }
+    else {
+      document.getElementById('LIHTC').style.display = 'none';
+    }
+    if (document.getElementById('H10').value == 'H103') {
+      document.getElementById('Transition').style.display = 'block';
+    }
+    else {
+      document.getElementById('Transition').style.display = 'none';
+    }
+    if (document.getElementById('H10').value == 'H104') {
+      document.getElementById('HOtherVoucher').style.display = 'block';
+    }
+    else {
+      document.getElementById('HOtherVoucher').style.display = 'none';
+    }
+
 
 // Family Logic Tree
 
@@ -1364,6 +1460,12 @@ function generate() {
     }
     else {
     	document.getElementById('iblurb').style.display = 'none';
+    }
+    if (document.getElementById('category').value == 'Domestic Violence') {
+    	document.getElementById('dvblurb').style.display = 'block';
+    }
+    else {
+    	document.getElementById('dvblurb').style.display = 'none';
     }
 }
 </script>
